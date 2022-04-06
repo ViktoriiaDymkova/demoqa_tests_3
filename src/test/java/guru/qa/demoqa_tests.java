@@ -1,9 +1,12 @@
 package guru.qa;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.Selenide;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.*;
+
 
 public class demoqa_tests {
     @BeforeAll
@@ -11,14 +14,32 @@ public class demoqa_tests {
         Configuration.holdBrowserOpen = true;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
+
     }
-
     @Test
-    void fillFormTests() {
-Selenide.open("/automation-practice-form");
-        Selenide.zoom(0.65);
+    void fillFormTest() {
+        open("/automation-practice-form");
+        zoom(0.65);
 
-Selenide.$("[id=firstName").setValue("vika");
+        $("[id=firstName]").setValue("vika");
+        $("[id=lastName]").setValue("kom");
+        $("[id=userEmail]").setValue("vika@kom.com");
+        $("#genterWrapper").$(byText("Female")).click();
+        $("[id=userNumber]").setValue("1234567890");
+        $("#dateOfBirthInput").click();
+        $(".react-datepicker__month-select").selectOption("July");
+        $(".react-datepicker__year-select").selectOption("1991");
+        $(".react-datepicker__day--011").click();
+        $("#subjectsInput").setValue("English").pressEnter();
+        $("#hobbiesWrapper").$(byText("Music")).click();
+        $("#uploadPicture").uploadFromClasspath("bruss.jpeg");
+        $("#currentAddress").setValue("Spb");
+        $("#state").click();
+        $("#react-select-3-option-0").click();
+        $("#city").click();
+        $("#react-select-4-option-0").click();
+        $("#submit").click();
+
     }
 
 }
