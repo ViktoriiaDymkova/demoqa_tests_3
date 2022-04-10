@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 
-public class demoqa_tests {
+public class Demoqa_tests {
     @BeforeAll
     static void beforeAll() {
         Configuration.holdBrowserOpen = true;
@@ -35,9 +35,9 @@ public class demoqa_tests {
         $("#uploadPicture").uploadFromClasspath("bruss.jpeg");
         $("#currentAddress").setValue("Spb");
         $("#state").click();
-        $("#react-select-3-option-0").click();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $("#react-select-4-option-0").click();
+        $("#stateCity-wrapper").$(byText("Delhi")).click();
         $("#submit").click();
 
     }
